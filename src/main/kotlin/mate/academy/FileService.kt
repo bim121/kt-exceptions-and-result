@@ -13,13 +13,13 @@ class FileService {
                 throw IOException("File does not exist or is not a valid file $fileName")
             }
 
-            file.readText()
+            file.readText().uppercase()
         }
     }
 
     fun processFileContent(fileName: String): String {
         return readFile(fileName)
-            .map { it.uppercase() }
+            .map { "Uppercase content:\n$it" }
             .getOrElse { exception ->
                 "Error: Cannot read file - ${exception.message}"
             }
